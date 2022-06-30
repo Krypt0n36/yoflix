@@ -1,0 +1,23 @@
+function fetchBucket() {
+    if(working){
+      return;
+    }
+    setWorking(true )
+    const s = slice;
+    console.log('CURRENT SLICE : ' + s)
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=050c9271bb810b20fb8022bfb34edbc4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${s}&with_watch_monetization_types=flatrate`)
+      .then((resp) => {
+        //setBucket(bucket.concat(resp.data.results))
+        setLoading(false)
+        setWorking(false)
+
+      })
+      .catch(err => {
+          setError(true)
+          setLoading(false)
+          setWorking(false)
+
+          
+
+      })
+  }
